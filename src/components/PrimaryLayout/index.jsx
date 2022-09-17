@@ -1,14 +1,14 @@
 import { lazy, Suspense } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import "./primarylayout.css";
 
-import { Routes, Route, Navigate } from "react-router-dom";
+// mui
+import Avatar from "@mui/material/Avatar";
 
 //components
 import PageLoader from "../PageLoader";
 const Courses = lazy(() => import("../Courses"));
 const CreateCourse = lazy(() => import("../CreateCourse"));
-//assets
-import ProfilePicture from "../../assets/profilepicture.jpg";
 
 const PrimaryLayout = () => {
   return (
@@ -22,14 +22,14 @@ const PrimaryLayout = () => {
             <h4>Tamilselvan</h4>
             <p>Admin</p>
           </div>
-          <img className="profile-picture" src={ProfilePicture} alt="profile" />
+          <Avatar className="user-avatar">T</Avatar>
         </div>
       </div>
       <div className="content-area">
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="courses" element={<Courses />} />
-            <Route path="create-course" element={<CreateCourse />} />
+            <Route path="create-course/*" element={<CreateCourse />} />
             <Route path="*" element={<Navigate to="courses" />} />
           </Routes>
         </Suspense>
