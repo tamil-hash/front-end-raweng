@@ -1,0 +1,75 @@
+.app-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 60px auto;
+}
+
+/* topbar styles */
+
+.topbar {
+  width: 100%;
+  grid-column: 1 / 3;
+  grid-row: 1/2;
+  border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.right-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.content-area {
+  height: 100%;
+  grid-column: 1 / 3;
+  grid-row: 2/3;
+}
+
+.courses-section {
+  width: 100%;
+  height: 100%;
+}
+
+.courses-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.courses-body {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: fit-content(1em);
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.course-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-card {
+  width: 250px;
+  height: 280px;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
