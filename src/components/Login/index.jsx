@@ -127,7 +127,7 @@ const Login = () => {
             type="submit"
             startIcon={<LoginIcon />}
           >
-            Signup as a Student
+            Login
           </LoadingButton>
         </FormControl>
         <div className="redirect">
