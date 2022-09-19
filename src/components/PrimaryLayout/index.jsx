@@ -1,7 +1,8 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./primarylayout.css";
 
+import { userContext } from "../../App";
 // mui
 import Avatar from "@mui/material/Avatar";
 
@@ -11,6 +12,8 @@ const Courses = lazy(() => import("../Courses"));
 const CreateCourse = lazy(() => import("../CreateCourse"));
 
 const PrimaryLayout = () => {
+  const userStore = useContext(userContext);
+
   return (
     <div className="app-container">
       <div className="topbar">
@@ -19,10 +22,18 @@ const PrimaryLayout = () => {
         </div>
         <div className="right-top">
           <div className="user-info">
-            <h4>Tamilselvan</h4>
-            <p>Admin</p>
+            <p>
+              <b>Name: </b>
+              {userStore?.userData?.name}
+            </p>
+            <p>
+              <b>Role: </b>
+              {userStore?.userData?.role}
+            </p>
           </div>
-          <Avatar className="user-avatar">T</Avatar>
+          <Avatar className="user-avatar">
+            {userStore?.userData?.name.substring(0, 1)}
+          </Avatar>
         </div>
       </div>
       <div className="content-area">

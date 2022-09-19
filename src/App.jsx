@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useContext, createContext } from "react";
+import { Suspense, lazy, useState, createContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 //components
@@ -14,11 +14,10 @@ function App() {
 
   const setUserDataOnLogin = (userData) => {
     setUserData(userData);
-    navigate("/");
   };
 
   return (
-    <userContext.Provider value={{ setUserDataOnLogin }}>
+    <userContext.Provider value={{ setUserDataOnLogin, userData }}>
       <Suspense fallback={<PageLoader />}>
         <div className="App">
           <Routes>

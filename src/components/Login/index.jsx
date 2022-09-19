@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { userContext } from "../../App";
 
@@ -19,7 +19,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
-  const userDatas = useContext(userContext);
+  const userStore = useContext(userContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
@@ -43,7 +43,7 @@ const Login = () => {
           password: password,
         })
         .then((response) => {
-          userDatas.setUserDataOnLogin(response.data);
+          userStore.setUserDataOnLogin(response.data);
         })
         .catch((error) => {
           if (error?.response?.status === 400) {

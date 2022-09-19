@@ -7,12 +7,17 @@ import InputLabel from "@mui/material/InputLabel";
 import Input from "@mui/material/Input";
 import Button from "@mui/material/Button";
 
-const courseDetails = () => {
+const courseDetails = ({ newCourse, setNewCourse }) => {
   const navigate = useNavigate();
 
   const submitCourseDetails = (event) => {
     event.preventDefault();
-    navigate("/create-course/add-lessons");
+    const name = event.target[0].value,
+      description = event.target[1].value;
+    if (name !== "" && description !== "") {
+      setNewCourse({ ...newCourse, name, description });
+      navigate("/create-course/add-lessons");
+    }
   };
 
   return (
@@ -30,7 +35,7 @@ const courseDetails = () => {
         </FormControl>
         <FormControl>
           <InputLabel htmlFor="description">Course Description</InputLabel>
-          <Input id="description" type="password" required={true} />
+          <Input id="description" type="text" required={true} />
         </FormControl>
         <FormControl>
           <Button variant="contained" type="submit">
