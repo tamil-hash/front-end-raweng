@@ -37,3 +37,12 @@ a {
   width: 350px;
 }
 
+.redirect {
+  text-align: end;
+}
+
+.redirect a {
+  color: #1565c0;
+  text-decoration: underline;
+}
+

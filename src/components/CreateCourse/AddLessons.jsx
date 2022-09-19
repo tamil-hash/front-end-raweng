@@ -11,7 +11,6 @@ const AddLessons = () => {
       <h2>Add Lessons</h2>
       {[...Array(lessonsLength)].map((value) => (
         <Card sx={{ minWidth: 275 }}>
-          {console.log(value)}
           <CardContent>
             <h2>Lesson-1</h2>
           </CardContent>
