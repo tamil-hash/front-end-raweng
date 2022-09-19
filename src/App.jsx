@@ -1,5 +1,5 @@
-import { Suspense, lazy, useState, createContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { Suspense, lazy, useState, createContext } from "react";
 
 //components
 import PageLoader from "./components/PageLoader";
