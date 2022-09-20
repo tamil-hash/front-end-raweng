@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import TextField from "@mui/material/TextField";
+import MenuItem from "@mui/material/MenuItem";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -22,6 +23,7 @@ const initialValues = {
   name: "",
   email: "",
   password: "",
+  role: "Learner",
   confirmPassword: "",
   nameError: false,
   emailError: false,
@@ -44,6 +46,8 @@ function reducer(state, action) {
       return { ...state, password: action.payload };
     case "CHANGE_CONFIRM_PASSWORD":
       return { ...state, confirmPassword: action.payload };
+    case "CHANGE_ROLE":
+      return { ...state, role: action.payload };
     case "ERROR_SET":
       return { ...state, ...action.payload };
     case "ERROR_RESET":
@@ -102,6 +106,7 @@ const Signup = () => {
           name: signupStates.name,
           email: signupStates.email,
           password: signupStates.password,
+          role: signupStates.role,
         })
         .then((response) => {
           navigate("/login", {
@@ -180,6 +185,19 @@ const Signup = () => {
           }
           value={signupStates.email}
         />
+        <TextField
+          id="outlined-select-currency"
+          select
+          label="Role"
+          value={signupStates.role}
+          onChange={(e) =>
+            dispatch({ type: "CHANGE_ROLE", payload: e.target.value })
+          }
+        >
+          <MenuItem value="Instructor">Instructor</MenuItem>
+          <MenuItem value="Learner">Learner</MenuItem>
+          ))}
+        </TextField>
         <TextField
           error={signupStates.passwordError}
           label="Create Password"
