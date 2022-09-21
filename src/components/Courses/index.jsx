@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-
 import { userContext } from "../../App";
 
 import axiosInstance from "../../utils/axiosInstance";
@@ -15,11 +14,11 @@ const Courses = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [courses, setCourses] = useState([]);
 
-  const goToCreateCourses = () => {
+  const goToCreateCourses = useCallback(() => {
     navigate("/create-course");
-  };
+  }, []);
 
-  const deleteCourse = (courseId) => {
+  const deleteCourse = useCallback((courseId) => {
     axiosInstance
       .delete(`/courses/delete/${courseId}`, {
         headers: { "x-access-token": userStore?.userData?.token },
@@ -30,7 +29,7 @@ const Courses = () => {
       .catch((error) => {
         console.log(error);
       });
-  };
+  }, []);
 
   const fetchAllCourses = async () => {
     setIsLoading(true);

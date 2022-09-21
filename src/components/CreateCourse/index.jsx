@@ -57,7 +57,7 @@ const CreateCourse = () => {
             />
           }
         />
-        <Route path="*" element={<Navigate to="details" />} />
+        <Route path="*" element={<Navigate replace to="details" />} />
       </Routes>
     </Suspense>
   );

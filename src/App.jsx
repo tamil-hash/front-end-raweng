@@ -24,13 +24,13 @@ function App() {
             {!!userData ? (
               <>
                 <Route path="/*" element={<PrimaryLayout />} />
-                <Route path="*" element={<Navigate to="courses" />} />
+                <Route path="*" element={<Navigate replace to="/" />} />
               </>
             ) : (
               <>
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
-                <Route path="*" element={<Navigate to="login" />} />
+                <Route path="*" element={<Navigate replace to="login" />} />
               </>
             )}
           </Routes>

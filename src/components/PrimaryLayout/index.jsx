@@ -41,7 +41,7 @@ const PrimaryLayout = () => {
           <Routes>
             <Route path="courses" element={<Courses />} />
             <Route path="create-course/*" element={<CreateCourse />} />
-            <Route path="*" element={<Navigate to="courses" />} />
+            <Route path="*" element={<Navigate replace to="courses" />} />
           </Routes>
         </Suspense>
       </div>
