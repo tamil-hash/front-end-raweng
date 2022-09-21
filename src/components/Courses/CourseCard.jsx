@@ -1,9 +1,14 @@
+import { useContext } from "react";
 import Button from "@mui/material/Button";
 
 //assets
 import CourseCardImg from "../../assets/coursecard.jpg";
 
-const CourseCard = ({ course }) => {
+import { userContext } from "../../App";
+
+const CourseCard = ({ course, deleteCourse }) => {
+  const userStore = useContext(userContext);
+
   return (
     <div className="course-card-container">
       <div className="course-card">
@@ -12,6 +17,15 @@ const CourseCard = ({ course }) => {
         <p>{course?.description}</p>
         <h4>Total lessons:{course.lessons}</h4>
         <Button variant="outlined">Take Course</Button>
+        {userStore?.userData?.role === "Instructor" && (
+          <Button
+            onClick={() => deleteCourse(course._id)}
+            variant="outlined"
+            color="error"
+          >
+            Delete Course
+          </Button>
+        )}
       </div>
     </div>
   );

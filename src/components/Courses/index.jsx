@@ -19,6 +19,19 @@ const Courses = () => {
     navigate("/create-course");
   };
 
+  const deleteCourse = (courseId) => {
+    axiosInstance
+      .delete(`/courses/delete/${courseId}`, {
+        headers: { "x-access-token": userStore?.userData?.token },
+      })
+      .then((response) => {
+        fetchAllCourses();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const fetchAllCourses = async () => {
     setIsLoading(true);
     axiosInstance
@@ -60,7 +73,13 @@ const Courses = () => {
             <h1>No Courses Found</h1>
           </div>
         ) : (
-          courses.map((course) => <CourseCard key={course} course={course} />)
+          courses.map((course) => (
+            <CourseCard
+              key={course._id}
+              deleteCourse={deleteCourse}
+              course={course}
+            />
+          ))
         )}
       </div>
     </div>
