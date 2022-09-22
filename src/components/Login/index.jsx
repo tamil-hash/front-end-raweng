@@ -35,7 +35,7 @@ const Login = () => {
       newPasswordError = password === "";
     setEmailError(newEmailError);
     setPasswordError(newPasswordError);
-    if (!(newEmailError && passwordError)) {
+    if (!newEmailError || !passwordError) {
       setLoginLoading(true);
       axiosInstance
         .post("login", {
